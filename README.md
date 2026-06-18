@@ -269,9 +269,31 @@ Recommended environment settings:
 - `PORT` provided by Railway
 - `PYTHONUNBUFFERED=1`
 
-### Optional Docker
+### Docker
 
-If you containerize the service, use a slim Python 3.11 base image and install from `requirements.txt`. PaddleOCR model files are downloaded on first use unless you bake them into the image.
+Build the container:
+
+```bash
+docker build -t egyptian-id-ocr .
+```
+
+Run the container locally:
+
+```bash
+docker run --rm -p 8000:8000 egyptian-id-ocr
+```
+
+The service will be available at `http://localhost:8000`.
+
+Notes:
+
+- the container uses `python:3.11-slim`
+- system libraries required by OpenCV and PaddleOCR are installed during build
+- PaddleOCR model files are downloaded on first inference unless you pre-bake them into the image
+
+### Optional Platform Notes
+
+The included `Dockerfile` is suitable for Railway or any standard container platform. If you deploy with Docker on Railway, point the service at the repository root and Railway will build the image directly.
 
 ## Security Notes
 
@@ -302,4 +324,3 @@ Egyptian national ID data is sensitive personal data and should be handled as re
 - first inference may be slower because PaddleOCR downloads model assets
 - OCR quality depends strongly on image sharpness and card visibility
 - field heuristics are production-oriented but still data-dependent; validate on your own dataset before launch
-
