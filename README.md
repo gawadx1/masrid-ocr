@@ -115,6 +115,15 @@ API docs:
 - Swagger UI: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
 
+## Google Colab
+
+Colab notebook:
+
+- `notebooks/egyptian_id_ocr_colab.ipynb`
+- Direct Colab link: `https://colab.research.google.com/github/gawadx1/masrid-ocr/blob/main/notebooks/egyptian_id_ocr_colab.ipynb`
+
+The notebook clones the repository, installs dependencies, lets you upload an ID image, runs preprocessing plus OCR, visualizes the results, and exports annotated output and JSON.
+
 Health check:
 
 ```bash
